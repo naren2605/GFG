@@ -2,6 +2,7 @@ package gfg;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class KandanesAlgorithm {
 
@@ -11,6 +12,7 @@ public class KandanesAlgorithm {
 		int[] array=new int[10];
 		
 		Random rand=new Random();
+		Scanner scanner=new Scanner(System.in);
 /*	for(int k=0;k<10;k++){
 		for(int i=0;i<10;i++){
 			array[i]=rand.nextInt(10);
