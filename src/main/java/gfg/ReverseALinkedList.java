@@ -3,9 +3,7 @@ package gfg;
 
 import java.util.Scanner;
 
-/**
- * https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1
- */
+
 public class ReverseALinkedList {
 
     public static class Node{
@@ -20,6 +18,58 @@ public class ReverseALinkedList {
             Node tmp=new Node(data);
             node.next=tmp;
             return tmp;
+        }
+        /**
+         * https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1
+         */
+        public static Node reverse(Node root){
+            Node previous=root;
+            root=root.next;
+            previous.next=null;
+            while (root!=null){
+                Node next=root.next;
+                root.next=previous;
+                previous=root;
+                root=next;
+            }
+            return previous;
+        }
+
+        /**
+         * https://practice.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1
+         * @param root
+         * @param groupCount
+         * @return
+         */
+        public static Node reverseGroup(Node root,int groupCount){
+
+            Node previous=null;
+            Node prevTemp=null;
+            Node first=null,pfirst=null;
+            Node actual_root=null;
+            while(root!=null) {
+                previous=root;
+                root = root.next;
+                previous.next = null;
+                pfirst=first;
+                first=previous;
+                int count=groupCount;
+                count--;
+                while (root != null && count-- > 0) {
+                    Node next = root.next;
+                    root.next = previous;
+                    previous = root;
+                    root = next;
+                }
+                if(prevTemp!=null&&pfirst!=null){
+                    pfirst.next=previous;
+                }
+                if(actual_root==null){
+                    actual_root=previous;
+                }
+                prevTemp=previous;
+            }
+            return actual_root;
         }
     }
 
@@ -40,18 +90,10 @@ public class ReverseALinkedList {
                     node=Node.addNext(node,scanner.nextInt());
                 }
             }
+            int groupCount=scanner.nextInt();
 
-            Node previous=root;
-            root=root.next;
-            previous.next=null;
-            while (root!=null){
-                Node next=root.next;
-                root.next=previous;
-                previous=root;
-                root=next;
-            }
 
-            Node tmp=previous;
+            Node tmp=Node.reverseGroup(root,groupCount);
             while(tmp!=null){
                 System.out.print(tmp.data+" ");
                 tmp=tmp.next;
