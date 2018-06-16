@@ -1,10 +1,16 @@
 package gfg;
 
+import java.util.Arrays;
+
 public class PermutationOfAString {
 
 	
 	public static void main(String[] args) {
-		String s="two";
+		String s="ABSG";
+		
+		char[] cs=s.toCharArray();
+		Arrays.sort(cs);
+		s=new String(cs);
 		permute("", s, s.length());
 	}
 	
