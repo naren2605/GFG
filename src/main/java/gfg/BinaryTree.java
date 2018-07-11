@@ -192,18 +192,11 @@ public class BinaryTree {
         bst3.add(109);
         bst3.add(108);
         System.out.println(bst3.diameter());
-
-
         Scanner scanner=new Scanner(System.in);
         int tests=scanner.nextInt();
         while(tests-->0){
-
             HashMap<Integer,Integer[]> map = new HashMap<Integer, Integer[]>();
             String n=scanner.next();
-
-
-
-
         }
 
     }
